@@ -31,10 +31,13 @@ class OMXPlayer:
         self._extensions = config.get('omxplayer', 'extensions') \
                                  .translate(str.maketrans('', '', ' \t\r\n.')) \
                                  .split(',')
-        self._extra_args = config.get('omxplayer', 'extra_args').split()
+        #self._extra_args = config.get('omxplayer', 'extra_args').split()
+        self._extra_args = config.get('omxplayer', 'extra_args')
+        self._playerW = config.getint('video_looper', 'player_width')
+        self._playerH = config.getint('video_looper', 'player_height')
+        self._extra_args = self._extra_args + " --win 0,0,"+str(self._playerW)+","+str(self._playerH)
+        self._extra_args = self._extra_args.split()
 
-        self._playerW = config.getint('omxplayer', 'player_width')
-        self._playerH = config.getint('omxplayer', 'player_height')
 
         self._sound = config.get('omxplayer', 'sound').lower()
         assert self._sound in ('hdmi', 'local', 'both'), 'Unknown omxplayer sound configuration value: {0} Expected hdmi, local, or both.'.format(self._sound)
@@ -58,8 +61,8 @@ class OMXPlayer:
         # Assemble list of arguments.
         args = ['omxplayer']
         args.extend(['-o', self._sound])  # Add sound arguments.
-        #args.extend(self._extra_args)     # Add extra arguments from config.
-        args.extend(self._extra_args+" --win 0,0,"+str(self._playerW)+","+str(self._playerH))     # Add extra arguments from config.
+        args.extend(self._extra_args)     # Add extra arguments from config.
+        #args.extend(self._extra_args+" --win 0,0,"+str(self._playerW)+","+str(self._playerH))     # Add extra arguments from config.
         if vol is not 0:
             args.extend(['--vol', str(vol)])
         if loop is None:
