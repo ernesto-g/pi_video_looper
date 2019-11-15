@@ -8,6 +8,16 @@ If you miss a feature just post an issue on github. (https://github.com/adafruit
 
 ## Changelog
 
+#### Cambios uso en pantallas LED
+
+ - Se pasaron parametros al reproductor para que el video comience del (0,0)
+ - Se agregaron dos campos en el archivo de configuracion que queda en /boot/video_loop.ini para definir ancho y alto del reproductor
+ - Se agrego el servicio ServiceBright para controlar el brillo desde archivo bright.txt que debe estar en el pendrive y que se copia a /home/pi/bright.txt
+ - Por defecto esta en el modo que copia del pendrive a la memoria SD los videos, y luego puede sacarse el pendrive.
+
+Para instalarlo, clonar repo y ejecutar install.sh. 
+
+
 #### new in v1.0.5
 
  - Support for M3U playlists.  
