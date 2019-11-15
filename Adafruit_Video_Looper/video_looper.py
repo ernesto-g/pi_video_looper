@@ -83,8 +83,8 @@ class VideoLooper:
         self._sound_vol = 0
         # Set other static internal state.
         self._extensions = '|'.join(self._player.supported_extensions())
-        self._small_font = pygame.font.Font(None, 50)
-        self._big_font   = pygame.font.Font(None, 250)
+        self._small_font = pygame.font.Font(None, 10)
+        self._big_font   = pygame.font.Font(None, 15)
         self._running    = True
         self._playbackStopped = False
         #used for not waiting the first time
@@ -109,7 +109,7 @@ class VideoLooper:
     def _load_file_reader(self):
         """Load the configured file reader and return an instance of it."""
         module = self._config.get('video_looper', 'file_reader')
-        return importlib.import_module('.' + module, 'Adafruit_Video_Looper').create_file_reader(self._config, self._screen)
+        return importlib.import_module('.' + module, 'Adafruit_Video_Looper').create_file_reader(self._config, self._screen,160,480) #le paso size 
 
     def _load_bgimage(self):
         """Load the configured background image and return an instance of it."""
@@ -226,7 +226,7 @@ class VideoLooper:
         message if the on screen display is enabled.
         """
         # Print message to console with number of movies in playlist.
-        message = 'Found {0} movie{1}.'.format(playlist.length(), 
+        message = '{0} video{1}.'.format(playlist.length(), 
             's' if playlist.length() >= 2 else '')
         self._print(message)
         # Do nothing else if the OSD is turned off.
@@ -234,7 +234,7 @@ class VideoLooper:
             return
         # Draw message with number of movies loaded and animate countdown.
         # First render text that doesn't change and get static dimensions.
-        label1 = self._render_text(message + ' Starting playback in:')
+        label1 = self._render_text(message + ' inicio en:')
         l1w, l1h = label1.get_size()
         sw, sh = self._screen.get_size()
         for i in range(self._countdown_time, 0, -1):
@@ -244,8 +244,9 @@ class VideoLooper:
             # Clear screen and draw text with line1 above line2 and all
             # centered horizontally and vertically.
             self._screen.fill(self._bgcolor)
-            self._screen.blit(label1, (sw/2-l1w/2, sh/2-l2h/2-l1h))
-            self._screen.blit(label2, (sw/2-l2w/2, sh/2-l2h/2))
+            #self._screen.blit(label1, (sw/2-l1w/2, sh/2-l2h/2-l1h))
+            self._screen.blit(label1, (0, 0)) #posicion de etiqueta
+            self._screen.blit(label2, (0, l1h+l1h))
             pygame.display.update()
             # Pause for a second between each frame.
             time.sleep(1)

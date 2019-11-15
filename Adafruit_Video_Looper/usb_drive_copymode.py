@@ -12,7 +12,7 @@ from .usb_drive_mounter import USBDriveMounter
 
 class USBDriveReaderCopy(object):
 
-    def __init__(self, config, screen):
+    def __init__(self, config, screen,screenW=0,screenH=0):
         """Create an instance of a file reader that uses the USB drive mounter
         service to keep track of attached USB drives and automatically mount
         them for reading videos.
@@ -20,7 +20,7 @@ class USBDriveReaderCopy(object):
         self._config = config
         self._screen = screen
         self._load_config(config)
-        self._pygame_init(config)
+        self._pygame_init(config,screenW,screenH)
         self._mounter = USBDriveMounter(root=self._mount_path,
                                         readonly=self._readonly)
         self._mounter.start_monitor()
@@ -29,7 +29,7 @@ class USBDriveReaderCopy(object):
             os.makedirs(self._target_path)
         #subprocess.call(['mkdir', self._target_path])
 
-    def _pygame_init(self, config):
+    def _pygame_init(self, config,screenW=0,screenH=0):
         self._bgcolor = (52,52,52)
         self._fgcolor = (149,193,26)
         self._bordercolor = (255,255,255)
@@ -37,8 +37,13 @@ class USBDriveReaderCopy(object):
         self._font = pygame.font.Font(None, 40)
 
         #positions and sizes:
-        self.screenwidth = pygame.display.Info().current_w
-        self.screenheight = pygame.display.Info().current_h
+        if screenW==0:
+            self.screenwidth = pygame.display.Info().current_w
+            self.screenheight = pygame.display.Info().current_h
+        else:
+            self.screenwidth = screenW
+            self.screenheight = screenH
+
         self.pwidth=0.8*self.screenwidth
         self.pheight=0.05*self.screenheight
         self.borderthickness = 2
@@ -231,6 +236,6 @@ class USBDriveReaderCopy(object):
         return 'Insert USB drive with compatible movies. Copy Mode: files will be copied to RPi.'
 
 
-def create_file_reader(config, screen):
+def create_file_reader(config, screen,screenW=0,screenH=0):
     """Create new file reader based on mounting USB drives."""
-    return USBDriveReaderCopy(config, screen)
+    return USBDriveReaderCopy(config, screen,screenW,screenH)
