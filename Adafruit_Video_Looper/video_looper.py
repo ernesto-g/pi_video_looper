@@ -83,8 +83,8 @@ class VideoLooper:
         self._sound_vol = 0
         # Set other static internal state.
         self._extensions = '|'.join(self._player.supported_extensions())
-        self._small_font = pygame.font.Font(None, 10)
-        self._big_font   = pygame.font.Font(None, 15)
+        self._small_font = pygame.font.Font(None, 15)
+        self._big_font   = pygame.font.Font(None, 20)
         self._running    = True
         self._playbackStopped = False
         #used for not waiting the first time

@@ -34,7 +34,7 @@ class USBDriveReaderCopy(object):
         self._fgcolor = (149,193,26)
         self._bordercolor = (255,255,255)
         self._fontcolor = (255,255,255)
-        self._font = pygame.font.Font(None, 40)
+        self._font = pygame.font.Font(None, 30)
 
         #positions and sizes:
         if screenW==0:
@@ -95,7 +95,8 @@ class USBDriveReaderCopy(object):
                 copy_mode_info = "(from config)"
 
             #inform about copymode
-            self.draw_info_text("Mode: " + copy_mode + " " + copy_mode_info)
+            #self.draw_info_text("Mode: " + copy_mode + " " + copy_mode_info)
+            self.draw_info_text("Copiando...")
 
             if copy_mode == "replace":
                 # iterate over target path for deleting:
@@ -114,7 +115,8 @@ class USBDriveReaderCopy(object):
                 loader_file_path = '{0}/{1}'.format(path.rstrip('/'), 'loader.png')
                 if os.path.exists(loader_file_path):
                     self.clear_screen()
-                    self.draw_info_text("Copying splashscreen file...")
+                    #self.draw_info_text("Copying splashscreen file...")
+                    self.draw_info_text("Copiando...")
                     time.sleep(2)
                     self.copy_with_progress(loader_file_path,'/home/pi/loader.png')
 
