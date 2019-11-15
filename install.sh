@@ -50,6 +50,14 @@ echo "==========================================="
 
 cp ./assets/video_looper.conf /etc/supervisor/conf.d/
 
+
+echo "Configuring service_bright to run on start..."
+echo "==========================================="
+cp ./assets/service_bright.conf /etc/supervisor/conf.d/
+mkdir /opt/service_bright
+cp ./ServiceBright2/serviceBright /opt/service_bright/serviceBright
+chmod 777 /opt/service_bright/serviceBright
+
 service supervisor restart
 
 echo "Finished!"

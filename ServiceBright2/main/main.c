@@ -71,7 +71,7 @@ void captureSignals(void)
 static int getBrightFromFile(void)
 {
 	int br=128;
-	FILE* fp = fopen("/home/pi/video/bright.txt","r");
+	FILE* fp = fopen("/home/pi/bright.txt","r");
 	char buffer[8];
 
 	if(fp!=NULL)

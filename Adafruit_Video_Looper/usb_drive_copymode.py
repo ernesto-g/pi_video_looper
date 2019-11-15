@@ -120,6 +120,21 @@ class USBDriveReaderCopy(object):
                     time.sleep(2)
                     self.copy_with_progress(loader_file_path,'/home/pi/loader.png')
 
+
+            try:
+                loader_file_path = '{0}/{1}'.format(path.rstrip('/'), 'bright.txt')
+                if os.path.exists(loader_file_path):
+                    self.clear_screen()
+                    #self.draw_info_text("Copying splashscreen file...")
+                    self.draw_info_text("Copiando...")
+                    time.sleep(2)
+                    self.copy_with_progress(loader_file_path,'/home/pi/bright.txt')
+            except:
+                print("no existe archivo de brillo")
+
+
+
+
     def draw_copy_progress(self, copied, total):
         perc = 100 * copied / total
         assert (isinstance(perc, float))
