@@ -66,6 +66,11 @@ class VideoLooper:
         self._fgcolor = list(map(int, self._config.get('video_looper', 'fgcolor')
                                              .translate(str.maketrans('','', ','))
                                              .split()))
+
+        # leo ancho y alto para el reproductor
+        self._playerWidth = self._config.getint('video_looper', 'player_width')
+        self._playerHeight = self._config.getint('video_looper', 'player_height')
+
         # Initialize pygame and display a blank screen.
         pygame.display.init()
         pygame.font.init()
@@ -109,7 +114,7 @@ class VideoLooper:
     def _load_file_reader(self):
         """Load the configured file reader and return an instance of it."""
         module = self._config.get('video_looper', 'file_reader')
-        return importlib.import_module('.' + module, 'Adafruit_Video_Looper').create_file_reader(self._config, self._screen,160,480) #le paso size 
+        return importlib.import_module('.' + module, 'Adafruit_Video_Looper').create_file_reader(self._config, self._screen,self._playerWidth,self._playerHeight) #le paso size del reproductor
 
     def _load_bgimage(self):
         """Load the configured background image and return an instance of it."""
