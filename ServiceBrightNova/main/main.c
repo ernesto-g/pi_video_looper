@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
 
     // Serial port
     port.bdrate=115200;
-    port.cport_nr=PORT_TTYUSB1;
+    port.cport_nr=PORT_TTYUSB0;
     printf("Abriendo TTYUSB0...\n");
     int r = rs232OpenPort(&port);
     if(r!=0)
