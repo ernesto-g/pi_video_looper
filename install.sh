@@ -58,6 +58,17 @@ mkdir /opt/service_bright
 cp ./ServiceBright2/serviceBright /opt/service_bright/serviceBright
 chmod 777 /opt/service_bright/serviceBright
 
+
+echo -n "Se utilizara sending NOVA ? (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    echo Yes
+    cp ./ServiceBrightNova/serviceBright /opt/service_bright/serviceBright
+    chmod 777 /opt/service_bright/serviceBright
+fi
+
+
+
 service supervisor restart
 
 echo "Finished!"
