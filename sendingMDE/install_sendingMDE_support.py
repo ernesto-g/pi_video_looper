@@ -81,7 +81,7 @@ print("2) Sending MDE")
 sendingType = input("Seleccione una opcion:")
 """
 if sendingType=="2":    
-    os.system("cp scripts/boot/config_1280x1024.txt /boot/config.txt")
+    os.system("cp scripts/boot/config_1280x1024_LCD.txt /boot/config.txt")
 else:
     os.system("cp scripts/boot/config_HDMI.txt /boot/config.txt")
 
