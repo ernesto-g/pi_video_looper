@@ -111,10 +111,10 @@ os.system("chmod 644 /lib/systemd/system/remote_player_comm.service")
 
 #instalo servicio de brillo para sending MDE
 if sendingType=="2":
-    os.system("rm -rf /opt/remote_video_player/brightService/*")
-    os.system("cp -r ServiceBrightMDE/* /opt/remote_video_player/brightService/")
-    os.system("mv /opt/remote_video_player/brightService/serviceBright.py /opt/remote_video_player/brightService/serviceBright")
-    os.system("chmod 777 /opt/remote_video_player/brightService/serviceBright")
+    os.system("rm -rf /opt/service_bright/*")
+    os.system("cp -r ServiceBrightMDE/* /opt/service_bright/")
+    os.system("mv /opt/service_bright/serviceBright.py /opt/service_bright/serviceBright")
+    os.system("chmod 777 /opt/service_bright/serviceBright")
 
 
 #Deshabilito NTP automatico
