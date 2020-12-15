@@ -1,0 +1,1 @@
+cmd_/home/pi/sign_raspberry_pi/hardware/uart/driver_uart/soft_uart.ko := ld -r  -EL  --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/pi/sign_raspberry_pi/hardware/uart/driver_uart/soft_uart.ko /home/pi/sign_raspberry_pi/hardware/uart/driver_uart/soft_uart.o /home/pi/sign_raspberry_pi/hardware/uart/driver_uart/soft_uart.mod.o;  true

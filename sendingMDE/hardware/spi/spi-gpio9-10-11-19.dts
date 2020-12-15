@@ -1,0 +1,36 @@
+/dts-v1/;
+
+/ {
+	compatible = "brcm,bcm2835";
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			cs-gpios = <0xffffffff 19 0x1 0xffffffff 18 0x1>;
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			brcm,pins = <19 18>;
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			brcm,pins = <9 10 11>;
+		};
+	};
+
+	__fixups__ {
+		spi0 = "/fragment@0:target:0";
+		gpio = "/fragment@0/__overlay__:cs-gpios:0", "/fragment@0/__overlay__:cs-gpios:12";
+		spi0_cs_pins = "/fragment@1:target:0";
+		spi0_pins = "/fragment@2:target:0";
+	};
+};

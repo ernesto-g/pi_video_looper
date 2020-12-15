@@ -1,0 +1,17 @@
+[Unit]
+Description=Remote Player WDT Service
+
+[Service]
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+ExecStart=/opt/remote_video_player/wdtService/serviceWatchdog
+Restart=always
+RestartSec=10s
+KillMode=process
+TimeoutSec=infinity
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=graphical.target
+

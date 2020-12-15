@@ -1,0 +1,16 @@
+1) Copiar spi-gpio9-10-11-19.dtbo en /boot/overlays/
+
+2) Agregar en /boot/config.txt abajo de todo:
+
+dtparam=spi=on
+dtoverlay=spi-gpio9-10-11-19
+
+chequear con sudo raspi-gpio get que se hayan asignado los pines
+
+
+
+links:
+https://github.com/raspberrypi/linux/issues/2169
+https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README
+
+

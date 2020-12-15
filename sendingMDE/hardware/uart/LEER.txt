@@ -1,0 +1,13 @@
+http://codeintherightway.blogspot.com/2017/09/soft-uart-implementation-for-raspberry.html
+https://github.com/adrianomarto/soft_uart
+
+entrar a la carpeta
+
+cd soft_uart
+make
+sudo make install
+
+para instalar el modulo 
+sudo insmod soft_uart.ko gpio_tx=19 gpio_rx=18
+
+aparecera en el /dev

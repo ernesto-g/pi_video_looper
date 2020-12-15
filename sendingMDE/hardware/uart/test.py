@@ -1,0 +1,17 @@
+import serial
+import time
+
+
+ser = serial.Serial('/dev/ttySOFT0',9600)
+
+while True:
+	#time.sleep(0.160)
+	#print("envio")
+	#ser.write(b'01234567890123450123456789012345012345678901234501234567890123450123456789012345012345678901234501234567890123450123456789012345')
+	data = ser.read()
+	print(data)
+
+
+
+
+
