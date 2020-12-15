@@ -33,7 +33,7 @@ class SignSettingsDAO
                         $vws->signModel = $row['model'];
                     }*/
 		    $vws->signName = ""; //$row['name'];
- 	            $vws->signModel = "MULTI-CONTENIDOS"; //$row['model'];
+ 	            $vws->signModel = "TOTEM"; //$row['model'];
 
                     //consulto cantidad de modulos
                     $results = $this->db->query('SELECT modulesW,modulesH,pitch FROM DisplaySettings WHERE idDisplay=1 LIMIT 1');
