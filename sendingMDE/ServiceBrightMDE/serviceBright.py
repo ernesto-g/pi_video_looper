@@ -6,7 +6,7 @@ from DisplayDAO import DisplayDAO
 from ConfigServer import ConfigServer
 from MyLog import MyLog
 
-logger = MyLog.getLogger("/opt/remote_video_player/confBrightVideoPlayer/")
+logger = MyLog.getLogger("/opt/service_bright/")
 logger.info("Service bright for sending MDE")
 
 
@@ -16,7 +16,7 @@ class Main:
     CONFIGURATION_SERVER_PORT = 8000
 
     def __init__(self):        
-        self.__displayDao = DisplayDAO("/opt/remote_video_player/confVideoPlayer/config.db3")
+        self.__displayDao = DisplayDAO("/home/pi/bright.txt")
         self.__prevBright=-1
         self.__server = None
 
@@ -63,24 +63,14 @@ class Main:
     def __readBright(self):
         ret=False
         try:
-            displays = self.__displayDao.getBright()
-            if len(displays)>0:
-                disp = displays[0] #solo trabajo con 1 display
-                print(disp)
-                bright = disp[0]
-                #lo llevo a la escala de 255
-                if bright>100:
-                    bright=100
-                bright = (bright*255)/100
-                bright = int(bright)
-                if bright>255:
-                    bright=255
-                #___________________________
-                if bright!=self.__prevBright:
-                    ret=True
-                    self.__prevBright = bright
-            else:
-                bright = 128
+            bright = self.__displayDao.getBright()
+            if bright>255:
+                bright=255
+            if bright<0:
+                bright=0
+            if bright!=self.__prevBright:
+                ret=True
+                self.__prevBright = bright
         except Exception as e:
             print(e)
             bright = 128
