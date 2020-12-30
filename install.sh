@@ -58,6 +58,13 @@ mkdir /opt/service_bright
 cp ./ServiceBright2/serviceBright /opt/service_bright/serviceBright
 chmod 777 /opt/service_bright/serviceBright
 
+echo "Configuring service_calendar to run on start..."
+echo "==========================================="
+cp ./assets/service_calendar.conf /etc/supervisor/conf.d/
+mkdir /opt/service_calendar
+cp ./ServiceCalendar/* /opt/service_calendar/
+chmod 777 /opt/service_calendar/serviceCalendar.py
+
 
 echo -n "Se utilizara sending NOVA ? (y/n)? "
 read answer
