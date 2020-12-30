@@ -132,6 +132,17 @@ class USBDriveReaderCopy(object):
             except:
                 print("no existe archivo de brillo")
 
+            try:
+                loader_file_path = '{0}/{1}'.format(path.rstrip('/'), 'calendar.txt')
+                if os.path.exists(loader_file_path):
+                    self.clear_screen()
+                    #self.draw_info_text("Copying splashscreen file...")
+                    self.draw_info_text("Copiando...")
+                    time.sleep(2)
+                    self.copy_with_progress(loader_file_path,'/home/pi/calendar.txt')
+            except:
+                print("no existe archivo de calendar")
+
 
 
 
