@@ -1,0 +1,21 @@
+div#contenedorPaginacion {
+	margin:auto;
+	width:260px;
+}
+div#pagination li {
+	list-style:none;
+	width:76px;
+	height:22px;
+	/*border:1px solid #666;*/
+	text-align:center;
+	float:left;
+	margin: 5px 10px;
+}
+div#pagination li .pagenav {
+	text-decoration:none;
+	color:#09C;
+	font-weight:bold;
+}
+div#pagination li .gris {
+	color:#999;
+}
