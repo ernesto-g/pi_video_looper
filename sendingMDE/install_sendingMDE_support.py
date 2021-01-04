@@ -40,6 +40,7 @@ os.system("aptitude install hostapd")
 
 
 #configuracion del sistema
+os.system("aptitude install raspberrypi-kernel-headers")
 os.system("cp scripts/rc.local /etc/")
 os.system("cp scripts/boot/dt-blob.bin /boot/")
 os.system("cp hardware/uart/driver_uart/soft_uart.ko /boot/")
