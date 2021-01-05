@@ -21,3 +21,4 @@ chmod 666 /var/log/kern.log.*
 chmod 666 /var/log/messages.*
 chmod 666 /var/log/user.log.*
 
+chmod 666 /home/pi/size.txt

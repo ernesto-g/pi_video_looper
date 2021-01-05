@@ -61,6 +61,11 @@ class SignSettingsDAO
 
                     $vws->maxBright = $this->getMaxBright();
 
+                    $size  = $this->readPlayerSize();
+                    //echo("lei size: ".$size["w"]." ".$size["h"]);
+                    $vws->wPx = (int)$size["w"];
+                    $vws->hPx = (int)$size["h"];
+
  			        return $vws;
 		        }
 		        return null;
@@ -69,7 +74,29 @@ class SignSettingsDAO
             usleep(100000);
         }
         return null;
-	}
+    }
+
+    public function updateSize($wPx,$hPx)
+    {
+        file_put_contents("/home/pi/size.txt","$wPx\n$hPx"); 
+    }
+    
+    private function readPlayerSize()
+    {
+        if(file_exists("/home/pi/size.txt"))
+        {
+            $handle = fopen("/home/pi/size.txt", "r");
+            if ($handle) {
+                $w = fgets($handle);
+                $h = fgets($handle);
+                fclose($handle);
+                return array("w"=>$w,"h"=>$h);
+            } else {
+                // error opening the file.
+            }
+        } 
+        return array("w"=>0,"h"=>0);
+    }
 
     public function updateValues($user,$timeout,$ntpOnOff,$ntpService)
     {

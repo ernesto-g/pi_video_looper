@@ -63,6 +63,8 @@ class Model
 
 	   $im->configureNetworks($fields["ip"],$fields["netmask"],$fields["gateway"],$flagDhcp,$fields["ssid"],$fields["wifiPass"],$fields["wifiMode"]);
 
+	   $this->signSettingsDao->updateSize($fields["wPx"],$fields["hPx"]);	
+
 
             return $error;
 	}

@@ -134,6 +134,7 @@ class View
 	{
 	//echo("dhcp vino con:");
 	//print_r("+".$flagDhcp."+");
+        //$signSettings->wPx
 
         $checked="";
         if($flagDhcp)
@@ -224,6 +225,20 @@ class View
                         </div>
                     </div>
 		    -->
+
+                <div class='form-group'>
+                    <label for='wPx' class='control-label col-sm-2'>Width (px):</label>
+                    <div class='col-sm-10'>
+                        <input type='number' class='form-control' value='".$signSettings->wPx."' id='wPx' name='wPx' placeholder='width' />
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label for='hPx' class='control-label col-sm-2'>Height (px):</label>
+                    <div class='col-sm-10'>
+                        <input type='number' class='form-control' value='".$signSettings->hPx."' id='hPx' name='hPx' placeholder='height' />
+                    </div>
+                </div>
+
                     <br>
 
 

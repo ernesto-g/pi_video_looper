@@ -73,6 +73,8 @@ os.system("chmod 777 /opt/remote_video_player/start_config.sh")
 #copio web de configuracion
 os.system("cp -r www/html/* /var/www/html/")
 os.system("rm /var/www/html/index.html")
+os.system("cp scripts/size.txt /home/pi/size.txt")
+os.system("chmod 666 /home/pi/size.txt")
 #__________________________
 
 """
