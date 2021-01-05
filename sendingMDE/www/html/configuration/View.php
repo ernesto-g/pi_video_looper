@@ -109,7 +109,7 @@ class View
                         <td>Memoria libre:</td>
                         <td>$disco</td>
                         <td>
-                            <form action='' method='POST' class='form-horizontal' onsubmit='return confirm(\"Se borrarán las imágenes del proyecto actual. ¿Está seguro?\");'>
+                            <form action='' method='POST' class='form-horizontal' onsubmit='return confirm(\"¿Está seguro?\");'>
                                 <input type='submit' value='Liberar' name='freeDisk' class='btn btn-default' ></input>
                             </form>
                         </td>
@@ -320,7 +320,7 @@ class View
             $msg="Se va a reiniciar el equipo...";
 
         if($flagFreeDisk)
-            $msg="Se libero espacio, se debe enviar nuevamente el proyecto.";
+            $msg="Se libero espacio.";
 
         if($flagSetDate)
             $msg="Se configuro la hora actual.";
