@@ -27,14 +27,37 @@ class OMXPlayer:
             self._temp_directory = tempfile.mkdtemp()
         return self._temp_directory
 
+    def __read_player_size(self):
+        try:
+            with open("/home/pi/size.txt","r") as f:
+                w = f.readline()
+                h = f.readline()
+                w = int(w)
+                h = int(h)
+                return (w,h)
+        except:
+            pass
+        return (None,None)
+
+
     def _load_config(self, config):
         self._extensions = config.get('omxplayer', 'extensions') \
                                  .translate(str.maketrans('', '', ' \t\r\n.')) \
                                  .split(',')
         #self._extra_args = config.get('omxplayer', 'extra_args').split()
         self._extra_args = config.get('omxplayer', 'extra_args')
+
         self._playerW = config.getint('video_looper', 'player_width')
         self._playerH = config.getint('video_looper', 'player_height')
+        # Leo ancho y alto de archivo genero por la web (si existe)
+        w,h = self.__read_player_size()
+        print("w:{} h:{}".format(w,h))
+        if w!=None and h!=None:
+            self._playerW = w
+            self._playerH = h
+        #___________________________________________________________
+
+
         self._extra_args = self._extra_args + " --win 0,0,"+str(self._playerW)+","+str(self._playerH)
         self._extra_args = self._extra_args.split()
 

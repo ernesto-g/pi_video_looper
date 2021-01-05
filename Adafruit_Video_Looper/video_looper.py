@@ -73,6 +73,7 @@ class VideoLooper:
 
         # Leo ancho y alto de archivo genero por la web (si existe)
         w,h = self.__read_player_size()
+        print("w:{} h:{}".format(w,h))
         if w!=None and h!=None:
             self._playerWidth = w
             self._playerHeight = h
