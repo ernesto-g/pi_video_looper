@@ -71,6 +71,13 @@ class VideoLooper:
         self._playerWidth = self._config.getint('video_looper', 'player_width')
         self._playerHeight = self._config.getint('video_looper', 'player_height')
 
+        # Leo ancho y alto de archivo genero por la web (si existe)
+        w,h = self.__read_player_size()
+        if w!=None and h!=None:
+            self._playerWidth = w
+            self._playerHeight = h
+        #___________________________________________________________
+
         # Initialize pygame and display a blank screen.
         pygame.display.init()
         pygame.font.init()
@@ -331,6 +338,19 @@ class VideoLooper:
         except:
             return 1 # sino esta, lo dejo prendido
         return st
+
+    def __read_player_size(self):
+        try:
+            with open("/home/pi/size.txt","r") as f:
+                w = f.readline()
+                h = f.readline()
+                w = int(w)
+                h = int(h)
+                return (w,h)
+        except:
+            pass
+        return (None,None)
+
 
     def run(self):
         """Main program loop.  Will never return!"""
