@@ -15,4 +15,4 @@ while True:
     data = calDao.read_calendar()
     taskMan.analize_calendar(data)
         
-    time.sleep(10)
+    time.sleep(60)

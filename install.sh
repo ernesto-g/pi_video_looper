@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Error out if anything fails.
-set -e
+#set -e
 
 # Make sure script is run as root.
 if [ "$(id -u)" != "0" ]; then
@@ -62,7 +62,7 @@ echo "Configuring service_calendar to run on start..."
 echo "==========================================="
 cp ./assets/service_calendar.conf /etc/supervisor/conf.d/
 mkdir /opt/service_calendar
-cp ./ServiceCalendar/* /opt/service_calendar/
+cp -r ./ServiceCalendar/* /opt/service_calendar/
 chmod 777 /opt/service_calendar/serviceCalendar.py
 
 
