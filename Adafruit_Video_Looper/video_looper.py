@@ -323,6 +323,15 @@ class VideoLooper:
                             self._player.stop(3)
 
 
+    def __read_state(self):
+        try:
+            with open("/home/pi/state.txt","r") as f:
+                d = f.read()
+                st = int(d)
+        except:
+            return 1 # sino esta, lo dejo prendido
+        return st
+
     def run(self):
         """Main program loop.  Will never return!"""
         # Get playlist of movies to play from file reader.
@@ -330,7 +339,26 @@ class VideoLooper:
         self._prepare_to_run_playlist(playlist)
         movie = playlist.get_next(self._is_random)
         # Main loop to play videos in the playlist and listen for file changes.
+        self.__divider=0
         while self._running:
+
+            #On Off state management
+            self.__divider+=1
+            if self.__divider > 1000:
+                self.__divider=0 # 2sec aprox
+                #print("Chequeo estado...")
+                st = self.__read_state()
+                if st==0:
+                    #OFF
+                    #print("OFF")
+                    self._playbackStopped = True
+                    self._player.stop(3)
+                else:
+                    #ON
+                    #print("ON")
+                    self._playbackStopped = False
+            #_________________________
+
             # Load and play a new movie if nothing is playing.
             if not self._player.is_playing() and not self._playbackStopped:
                 if movie is not None: #just to avoid errors
@@ -377,6 +405,7 @@ class VideoLooper:
             # Give the CPU some time to do other tasks.
             time.sleep(0.002)
 
+
     def quit(self):
         """Shut down the program"""
         self._print("quitting Video Looper")
@@ -395,7 +424,7 @@ class VideoLooper:
 
 # Main entry point.
 if __name__ == '__main__':
-    print('Starting Adafruit Video Looper.')
+    print('Starting Adafruit Video Looper. MDE')
     # Default config path to /boot.
     config_path = '/boot/video_looper.ini'
     # Override config path if provided as parameter.
