@@ -76,6 +76,7 @@ os.system("cp -r www/html/* /var/www/html/")
 os.system("rm /var/www/html/index.html")
 os.system("cp scripts/size.txt /home/pi/size.txt")
 os.system("chmod 666 /home/pi/size.txt")
+os.system("chmod 666 /var/www/html/dbconfig.db3")
 #__________________________
 
 """
