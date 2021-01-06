@@ -40,6 +40,7 @@ os.system("aptitude install hostapd")
 
 
 #configuracion del sistema
+os.system("apt-get upgrade")
 os.system("aptitude install raspberrypi-kernel-headers")
 os.system("cp scripts/rc.local /etc/")
 os.system("cp scripts/boot/dt-blob.bin /boot/")
