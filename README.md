@@ -17,6 +17,22 @@ If you miss a feature just post an issue on github. (https://github.com/adafruit
 
 Para instalarlo, clonar repo y ejecutar install.sh. 
 
+#### Cambios uso en pantallas LED con sending MDE
+
+ - Se agrego pagina de configuracion. user y pass "admin". Desde aqui se puede configurar la red, el wifi el ancho y alto y la configuracion de los modulos.
+ - Se agrego servicio de calendario, para usarlo, se debe crear el archivo "calendar.txt" en el pendrive, con el formato:
+
+07:00=ON
+07:00=30
+19:00=70
+00:00=OFF
+
+Puede existir una hora de encendido y otra de apagado, y dos horas para cambio de brillo.
+
+ - Se agrego soporte para encender y apagar el reproductor segun horario.
+
+Para instalarlo, entrar a la carpeta sendingMDE y ejecutar el instalador "install_sendingMDE_support.py" pasandole como argumento si la salida de video va a ser por HDMI o por los pines de LCD (salida de sending MDE)
+
 
 #### new in v1.0.5
 
